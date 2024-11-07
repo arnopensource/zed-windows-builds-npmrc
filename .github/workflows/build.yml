@@ -21,6 +21,10 @@ jobs:
           repository: zed-industries/zed
           ref: main
 
+      - name: Apply patch
+        run: |
+          git apply ../no-npm-user-config-reset.patch
+
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
         with:
