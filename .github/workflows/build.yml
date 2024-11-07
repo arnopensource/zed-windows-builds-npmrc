@@ -17,26 +17,22 @@ jobs:
           New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
             -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 
-      - name: Checkout local repository to get patch 
-        uses: actions/checkout@v3
-
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           repository: zed-industries/zed
           ref: main
 
-      - name: Print Folder Tree
-        uses: jaywcjlove/github-action-folder-tree@main
+      - name: Get patch
+        id: get-git-path
+        uses: andymckay/get-gist-action@master
         with:
-          exclude: "node_modules|dist|.git|.husky"
-          path: ..
-          depth: 2
-
+          gistURL: "https://gist.github.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca" 
+      
       - name: Apply patch
-        working-directory: zed
+        id: run
         run: |
-          git apply ../no-npm-user-config-reset.patch
+          git apply < ${{ steps.get-git-patch.outputs.file }}
 
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
