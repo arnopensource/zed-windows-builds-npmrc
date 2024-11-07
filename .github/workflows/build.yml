@@ -24,15 +24,12 @@ jobs:
           ref: main
 
       - name: Get patch
-        id: get-git-path
-        uses: andymckay/get-gist-action@master
-        with:
-          gistURL: "https://gist.github.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca" 
+        run: |
+          curl https://gist.githubusercontent.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca/raw/45729d8e72d48e1a2aab0a1f149f1dac3d2f521b/no-npm-user-config-reset.patch > no-npm-user-config-reset.patch
       
       - name: Apply patch
-        id: run
         run: |
-          git apply < ${{ steps.get-git-patch.outputs.file }}
+          git apply no-npm-user-config-reset.patch
 
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
