@@ -24,6 +24,7 @@ jobs:
           ref: main
 
       - name: Apply patch
+        working-dir: zed
         run: |
           git apply ../no-npm-user-config-reset.patch
 
