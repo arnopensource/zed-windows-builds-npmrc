@@ -27,8 +27,6 @@ jobs:
         run: |
           curl https://gist.githubusercontent.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca/raw/45729d8e72d48e1a2aab0a1f149f1dac3d2f521b/no-npm-user-config-reset.patch > no-npm-user-config-reset.patch
           git apply no-npm-user-config-reset.patch
-          curl https://gist.githubusercontent.com/solutec-adupere/4b7e30549fb914c1cea409d00fef5b30/raw/4cefcf1a2c6e7b65b92d0b4557e432d13108a5b1/rust-analyzer-windows.patch > rust-analyzer-windows.patch
-          git apply rust-analyzer-windows.patch
           
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
