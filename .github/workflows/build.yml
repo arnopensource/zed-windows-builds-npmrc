@@ -27,6 +27,8 @@ jobs:
         run: |
           curl https://gist.githubusercontent.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca/raw/45729d8e72d48e1a2aab0a1f149f1dac3d2f521b/no-npm-user-config-reset.patch > no-npm-user-config-reset.patch
           git apply no-npm-user-config-reset.patch
+          curl https://gist.githubusercontent.com/arnopensource/44c17bd13fab01a420a60f6f78da8c93/raw/b8248b8eb541602ef1e9271cb1e752b2dcae28bc/omnisharp_multiple_windows.patch > omnisharp_multiple_windows.patch
+          git apply omnisharp_multiple_windows.patch
           
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
