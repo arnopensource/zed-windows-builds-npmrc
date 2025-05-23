@@ -22,14 +22,14 @@ jobs:
         with:
           repository: zed-industries/zed
           ref: main
-      
+
       - name: Apply patches
         run: |
           curl https://gist.githubusercontent.com/arnopensource/7a93eb0bdd6fecf0d73b6f97be5798ca/raw/ec67384b5b4dea91da10df0cf579ee71d4f5b547/no-npm-user-config-reset.patch > no-npm-user-config-reset.patch
           git apply no-npm-user-config-reset.patch
-          curl https://gist.githubusercontent.com/arnopensource/44c17bd13fab01a420a60f6f78da8c93/raw/2b055994b7517862ce3738aeb9b30e6827e145d3/omnisharp_multiple_windows.patch > omnisharp_multiple_windows.patch
+          curl https://gist.githubusercontent.com/arnopensource/44c17bd13fab01a420a60f6f78da8c93/raw/c22a512ed9347ab8796df3941b6c580364e48665/omnisharp_multiple_windows.patch > omnisharp_multiple_windows.patch
           git apply omnisharp_multiple_windows.patch
-          
+
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
         with:
